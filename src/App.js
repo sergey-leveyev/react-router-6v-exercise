@@ -1,26 +1,23 @@
 import "./App.css";
 
-import { Route, Link, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import { Homepage } from "./pages/Homepage";
 import { BlogPage } from "./pages/BlogPage";
 import { Aboutpage } from "./pages/Aboutpage";
 import { NotfoundPage } from "./pages/NotfoundPage";
+import { Layout } from "./components/Layout";
 
 function App() {
   return (
     <>
-      <header>
-        <Link to="/">Home</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/about">About</Link>
-      </header>
-
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/about" element={<Aboutpage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="*" element={<NotfoundPage />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Homepage />} />
+          <Route path="about" element={<Aboutpage />} />
+          <Route path="blog" element={<BlogPage />} />
+          <Route path="*" element={<NotfoundPage />} />
+        </Route>
       </Routes>
     </>
   );
